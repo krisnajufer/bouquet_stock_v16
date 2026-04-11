@@ -1,0 +1,103 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:material_code",
+ "creation": "2026-04-11 14:17:58.537007",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "material_code",
+  "material_name",
+  "column_break_swrd",
+  "in_stock",
+  "out_stock",
+  "issue_qty"
+ ],
+ "fields": [
+  {
+   "fieldname": "material_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Kode Material",
+   "options": "Material",
+   "read_only": 1,
+   "search_index": 1,
+   "unique": 1
+  },
+  {
+   "fetch_from": "material_code.material_name",
+   "fieldname": "material_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Nama Material",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_swrd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "in_stock",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Qty Masuk",
+   "non_negative": 1,
+   "precision": "2",
+   "search_index": 1
+  },
+  {
+   "fieldname": "out_stock",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty Keluar",
+   "non_negative": 1,
+   "precision": "2",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "issue_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Qty Dibuang",
+   "non_negative": 1,
+   "precision": "2",
+   "search_index": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "in_create": 1,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-11 14:21:45.264765",
+ "modified_by": "Administrator",
+ "module": "Bouquet Stock",
+ "name": "Material Stock",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

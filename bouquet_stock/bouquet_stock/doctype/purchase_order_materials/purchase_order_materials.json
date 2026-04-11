@@ -1,0 +1,165 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-04-11 14:28:11.502547",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "material_code",
+  "material_name",
+  "column_break_rszu",
+  "price",
+  "qty_dipesan",
+  "amount",
+  "section_break_vhbe",
+  "current_qty",
+  "safety_stock",
+  "lead_time",
+  "column_break_rfuf",
+  "min_qty",
+  "max_qty",
+  "section_break_gkvc",
+  "accepted_qty",
+  "purchase_receipts"
+ ],
+ "fields": [
+  {
+   "fieldname": "material_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Kode Material",
+   "options": "Material",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fetch_from": "material_code.material_name",
+   "fieldname": "material_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Nama Material",
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_rszu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Harga",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "qty_dipesan",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Qty Dipesan",
+   "non_negative": 1,
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_vhbe",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "current_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty Saat ini",
+   "non_negative": 1,
+   "precision": "2",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "safety_stock",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Safety Stock",
+   "precision": "2",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_rfuf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "min_qty",
+   "fieldtype": "Float",
+   "label": "Min",
+   "non_negative": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "max_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Max",
+   "non_negative": 1,
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount",
+   "non_negative": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_gkvc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "accepted_qty",
+   "fieldtype": "Float",
+   "label": "Qty Diterima",
+   "non_negative": 1,
+   "precision": "2",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "purchase_receipts",
+   "fieldtype": "Small Text",
+   "label": "Purchase Receipts",
+   "read_only": 1
+  },
+  {
+   "fieldname": "lead_time",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Lead Time",
+   "non_negative": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-04-11 14:49:21.530463",
+ "modified_by": "Administrator",
+ "module": "Bouquet Stock",
+ "name": "Purchase Order Materials",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
