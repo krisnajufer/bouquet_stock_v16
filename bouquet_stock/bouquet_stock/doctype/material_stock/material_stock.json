@@ -11,7 +11,8 @@
   "column_break_swrd",
   "in_stock",
   "out_stock",
-  "issue_qty"
+  "issue_qty",
+  "ordered_qty"
  ],
  "fields": [
   {
@@ -22,7 +23,6 @@
    "label": "Kode Material",
    "options": "Material",
    "read_only": 1,
-   "search_index": 1,
    "unique": 1
   },
   {
@@ -68,13 +68,23 @@
    "non_negative": 1,
    "precision": "2",
    "search_index": 1
+  },
+  {
+   "fieldname": "ordered_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty Dipesan",
+   "non_negative": 1,
+   "precision": "2",
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-11 14:21:45.264765",
+ "modified": "2026-04-11 15:11:55.339097",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Material Stock",

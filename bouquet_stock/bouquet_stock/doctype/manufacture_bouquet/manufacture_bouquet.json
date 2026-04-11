@@ -1,0 +1,72 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-04-11 15:13:15.243884",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "bouquet_code",
+  "bouquet_name",
+  "column_break_cyoe",
+  "qty",
+  "availability_status"
+ ],
+ "fields": [
+  {
+   "fieldname": "bouquet_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Kode Bouquet",
+   "options": "Bouquet",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fetch_from": "bouquet_code.bouquet_name",
+   "fieldname": "bouquet_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nama Bouquet",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_cyoe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty",
+   "non_negative": 1,
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "availability_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status Tersedia",
+   "options": "\nCukup\nTidak Cukup",
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-04-11 15:17:33.675755",
+ "modified_by": "Administrator",
+ "module": "Bouquet Stock",
+ "name": "Manufacture Bouquet",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
