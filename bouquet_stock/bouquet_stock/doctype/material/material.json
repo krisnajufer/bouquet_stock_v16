@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "MTR-.#####",
  "creation": "2026-04-11 14:06:10.876292",
@@ -17,13 +18,13 @@
    "in_standard_filter": 1,
    "label": "Nama Material",
    "reqd": 1,
-   "search_index": 1
+   "unique": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-11 14:07:26.063169",
+ "modified": "2026-04-12 15:25:09.656869",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Material",
@@ -45,6 +46,7 @@
  ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
+ "search_fields": "material_name",
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": [],

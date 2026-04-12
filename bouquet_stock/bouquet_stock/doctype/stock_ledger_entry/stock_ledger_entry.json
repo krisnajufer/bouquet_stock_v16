@@ -17,7 +17,9 @@
   "voucher_detail_no",
   "section_break_nquv",
   "qty_change",
-  "qty_after_transaction"
+  "qty_after_transaction",
+  "column_break_yszy",
+  "is_cancelled"
  ],
  "fields": [
   {
@@ -114,13 +116,24 @@
    "non_negative": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "column_break_yszy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_cancelled",
+   "fieldtype": "Check",
+   "label": "Is Cancelled",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-12 11:29:06.255810",
+ "modified": "2026-04-12 12:08:22.820583",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Stock Ledger Entry",

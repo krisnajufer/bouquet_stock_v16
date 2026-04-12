@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "BQT-.#####",
  "creation": "2026-04-11 14:14:28.968975",
@@ -64,7 +65,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-04-11 14:16:30.545217",
+ "modified": "2026-04-12 15:07:12.849236",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Bouquet",

@@ -5,7 +5,8 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "lead_time"
+  "lead_time",
+  "calculation_transaction"
  ],
  "fields": [
   {
@@ -15,13 +16,21 @@
    "label": "Lead Time (Days)",
    "non_negative": 1,
    "reqd": 1
+  },
+  {
+   "fieldname": "calculation_transaction",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Calculation Transaction (Days)",
+   "non_negative": 1,
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-04-12 11:32:56.791595",
+ "modified": "2026-04-12 12:05:22.597414",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Stock Settings",

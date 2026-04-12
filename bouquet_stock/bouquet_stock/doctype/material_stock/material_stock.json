@@ -13,6 +13,7 @@
   "out_stock",
   "issue_qty",
   "ordered_qty",
+  "actual_qty",
   "section_break_uxvg",
   "safety_stock",
   "min_qty",
@@ -44,6 +45,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "0",
    "fieldname": "in_stock",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -54,6 +56,7 @@
    "search_index": 1
   },
   {
+   "default": "0",
    "fieldname": "out_stock",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -64,6 +67,7 @@
    "search_index": 1
   },
   {
+   "default": "0",
    "fieldname": "issue_qty",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -74,6 +78,7 @@
    "search_index": 1
   },
   {
+   "default": "0",
    "fieldname": "ordered_qty",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -88,6 +93,7 @@
    "fieldtype": "Section Break"
   },
   {
+   "default": "0",
    "fieldname": "safety_stock",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -97,6 +103,7 @@
    "search_index": 1
   },
   {
+   "default": "0",
    "fieldname": "min_qty",
    "fieldtype": "Float",
    "label": "Min",
@@ -105,10 +112,21 @@
    "search_index": 1
   },
   {
+   "default": "0",
    "fieldname": "qty_max",
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Max",
+   "non_negative": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "actual_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty Aktual",
    "non_negative": 1,
    "read_only": 1,
    "search_index": 1
@@ -118,7 +136,7 @@
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-12 11:31:33.073585",
+ "modified": "2026-04-12 15:17:42.255939",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Material Stock",
