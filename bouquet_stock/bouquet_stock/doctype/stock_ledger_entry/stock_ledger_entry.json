@@ -1,22 +1,23 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:material_code",
- "creation": "2026-04-11 14:17:58.537007",
+ "autoname": "SLE-.MM.-.YYYY.-.#####",
+ "creation": "2026-04-12 11:21:15.801937",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "material_code",
   "material_name",
-  "column_break_swrd",
-  "in_stock",
-  "out_stock",
-  "issue_qty",
-  "ordered_qty",
-  "section_break_uxvg",
-  "safety_stock",
-  "min_qty",
-  "qty_max"
+  "posting_date",
+  "posting_time",
+  "posting_datetime",
+  "column_break_nzfj",
+  "voucher_type",
+  "voucher_no",
+  "voucher_detail_no",
+  "section_break_nquv",
+  "qty_change",
+  "qty_after_transaction"
  ],
  "fields": [
   {
@@ -27,88 +28,89 @@
    "label": "Kode Material",
    "options": "Material",
    "read_only": 1,
-   "unique": 1
+   "search_index": 1
   },
   {
    "fetch_from": "material_code.material_name",
+   "fetch_if_empty": 1,
    "fieldname": "material_name",
    "fieldtype": "Data",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Nama Material",
+   "search_index": 1
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Posting Date",
    "read_only": 1,
    "search_index": 1
   },
   {
-   "fieldname": "column_break_swrd",
+   "fieldname": "posting_time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Posting Time",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "posting_datetime",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Posting Datetime",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_nzfj",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "in_stock",
-   "fieldtype": "Float",
+   "fieldname": "voucher_type",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Qty Masuk",
-   "non_negative": 1,
-   "precision": "2",
+   "label": "Voucher Type",
+   "options": "DocType",
    "search_index": 1
   },
   {
-   "fieldname": "out_stock",
-   "fieldtype": "Float",
+   "fieldname": "voucher_no",
+   "fieldtype": "Dynamic Link",
    "in_list_view": 1,
-   "label": "Qty Keluar",
-   "non_negative": 1,
-   "precision": "2",
+   "label": "Voucher No",
+   "options": "voucher_type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "voucher_detail_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Voucher Detail No",
    "read_only": 1,
    "search_index": 1
   },
   {
-   "fieldname": "issue_qty",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Qty Dibuang",
-   "non_negative": 1,
-   "precision": "2",
-   "search_index": 1
-  },
-  {
-   "fieldname": "ordered_qty",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "Qty Dipesan",
-   "non_negative": 1,
-   "precision": "2",
-   "read_only": 1,
-   "search_index": 1
-  },
-  {
-   "fieldname": "section_break_uxvg",
+   "fieldname": "section_break_nquv",
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "safety_stock",
+   "fieldname": "qty_change",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Safety Stock",
+   "label": "Qty Change",
    "non_negative": 1,
    "read_only": 1,
    "search_index": 1
   },
   {
-   "fieldname": "min_qty",
-   "fieldtype": "Float",
-   "label": "Min",
-   "non_negative": 1,
-   "read_only": 1,
-   "search_index": 1
-  },
-  {
-   "fieldname": "qty_max",
+   "fieldname": "qty_after_transaction",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Max",
+   "label": "Qty After Transaction",
    "non_negative": 1,
    "read_only": 1,
    "search_index": 1
@@ -118,11 +120,11 @@
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-12 11:31:33.073585",
+ "modified": "2026-04-12 11:29:06.255810",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
- "name": "Material Stock",
- "naming_rule": "By fieldname",
+ "name": "Stock Ledger Entry",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
