@@ -21,9 +21,13 @@ from bouquet_stock.utils import (
 )
 
 class PurchaseOrder(Document):
-	def validate(self):
+	def before_validate(self):
 		self.set_missing_values()
+		self.set_min_max_values()
 		self.calculate_totals()
+
+	def on_submit(self):
+		self.set_status()
 
 	def set_missing_values(self):
 		if not self.supplier_name:
@@ -36,11 +40,29 @@ class PurchaseOrder(Document):
 			total += row.amount
 		self.grand_total = total
 
+	def set_min_max_values(self):
+		for row in self.materials:
+			res = min_max_calculation(row.material_code, self.posting_date)
+			row.current_qty = res.current_qty
+			row.safety_stock = res.safety_stock
+			row.lead_time = res.lead_time
+			row.min_qty = res.min
+			row.max_qty = res.max
+			row.qty = (res.max - res.current_qty) if res.max and res.max > 0 else row.qty
+
+	def set_status(self):
+		if self.percentage_accepted_qty > 0 and self.percentage_accepted_qty >= 99.99:
+			self.status = "Diterima Semua"
+		elif self.percentage_accepted_qty > 0 and self.percentage_accepted_qty < 99.99:
+			self.status = "Diterima Sebagian"
+		else:
+			self.status = "Belum Diterima"
+
 @frappe.whitelist()
 def min_max_calculation(material_code:str, posting_date:date):
 	lead_time = frappe.db.get_single_value("Stock Settings", "lead_time")
 	calculation_transaction = frappe.db.get_single_value("Stock Settings", "calculation_transaction")
-	start_date = posting_date - timedelta(days=30)
+	start_date = posting_date - timedelta(days=calculation_transaction)
 	SLE = frappe.qb.DocType("Stock Ledger Entry")
 
 	query = (

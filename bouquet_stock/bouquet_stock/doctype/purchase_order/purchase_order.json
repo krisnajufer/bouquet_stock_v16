@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "PO-.MM.-.YYYY.-.#####",
  "creation": "2026-04-11 14:36:27.658470",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -10,6 +11,7 @@
   "supplier_name",
   "column_break_jhdj",
   "posting_date",
+  "status",
   "section_break_ojst",
   "materials",
   "section_break_ndbv",
@@ -109,16 +111,26 @@
    "non_negative": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status Pemesanan",
+   "options": "\nBelum Diterima\nDiterima Sebagian\nDiterima Semua",
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-04-11 14:53:44.856384",
+ "modified": "2026-04-13 12:46:44.923992",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Purchase Order",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
