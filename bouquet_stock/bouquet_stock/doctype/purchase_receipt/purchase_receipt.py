@@ -10,6 +10,9 @@ from bouquet_stock.bouquet_stock.doctype.stock_ledger_entry.stock_ledger_entry i
 	make_sle,
 	cancel_sle
 )
+from frappe.query_builder.functions import ( 
+	Sum
+)
 
 class PurchaseReceipt(Document):
 	def validate(self):
@@ -100,8 +103,40 @@ class PurchaseReceipt(Document):
 		if not purchase_orders:
 			return
 
-		for name in purchase_orders:
-			frappe.get_doc("Purchase Order", name).set_status()
+		POM = frappe.qb.DocType("Purchase Order Materials")
+
+		summary = (
+			frappe.qb.from_(POM)
+			.select(
+				POM.parent,
+				Sum(POM.qty).as_("total_qty"),
+				Sum(POM.accepted_qty).as_("total_accepted")
+			)
+			.where(POM.parent.isin(purchase_orders))
+			.groupby(POM.parent)
+		).run(as_dict=True)
+		if not summary:
+			return
+
+		for row in summary:
+			total_qty = flt(row.total_qty)
+			total_accepted = max(flt(row.total_accepted), 0)
+
+			percentage = (
+				(total_accepted / total_qty) * 100
+				if total_qty else 0
+			)
+
+			percentage = min(percentage, 100)
+
+			frappe.db.set_value(
+				"Purchase Order",
+				row.parent,
+				"percentage_accepted_qty",
+				percentage,
+				update_modified=False
+			)
+			frappe.get_doc("Purchase Order", row.parent).set_status()
 			
 @frappe.whitelist()
 def filter_material_code(doctype, txt, searchfield, start, page_len, filters):

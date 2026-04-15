@@ -55,7 +55,7 @@ class PurchaseOrder(Document):
 		if self.percentage_accepted_qty > 0 and self.percentage_accepted_qty >= 99.99:
 			self.db_set("status, ""Diterima Semua")
 		elif self.percentage_accepted_qty > 0 and self.percentage_accepted_qty < 99.99:
-			self.db_set("srarys", "Diterima Sebagian")
+			self.db_set("status", "Diterima Sebagian")
 		else:
 			self.db_set("status", "Belum Diterima")
 
