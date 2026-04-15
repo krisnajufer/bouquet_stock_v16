@@ -32,7 +32,7 @@
    "fieldname": "posting_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Posting Date",
+   "label": "Tanggal Penerimaan",
    "reqd": 1,
    "search_index": 1
   },
@@ -40,7 +40,7 @@
    "fieldname": "posting_time",
    "fieldtype": "Time",
    "in_list_view": 1,
-   "label": "Posting Time",
+   "label": "Waktu Penerimaan",
    "reqd": 1
   },
   {
@@ -59,7 +59,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-04-11 15:09:04.646584",
+ "modified": "2026-04-15 15:27:44.953457",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Purchase Receipt",

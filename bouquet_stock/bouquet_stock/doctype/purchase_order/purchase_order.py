@@ -1,10 +1,11 @@
 # Copyright (c) 2026, Krisna Jufer and contributors
 # For license information, please see license.txt
-
+import json
 from datetime import (
 	date,
 	timedelta
 )
+
 import frappe
 
 from frappe.model.document import Document
@@ -89,3 +90,38 @@ def min_max_calculation(material_code:str, posting_date:date):
 		"current_qty": actual_qty,
 		"lead_time": lead_time
 	})
+
+@frappe.whitelist()
+def get_po_detail(filters: str, values: str):
+	# --- Guard clause ---
+	filters = json.loads(filters)
+	values = json.loads(values)
+	
+	if not values:
+		return {}
+
+	# --- Handle special field ---
+	is_actual_qty = "current_qty" in values
+	values = [v for v in values if v != "current_qty"]
+
+	# --- Fetch data ---
+	po_detail = frappe.db.get_value(
+		"Purchase Order Materials",
+		filters,
+		values,
+		as_dict=True
+	) or {}
+
+	result = frappe._dict(po_detail)
+
+	# --- Resolve material_code ---
+	material_code = (
+		filters.get("material_code")
+		or po_detail.get("material_code")
+	)
+
+	# --- Enrich data ---
+	if is_actual_qty and material_code:
+		result["current_qty"] = get_actual_qty(material_code)
+
+	return result
