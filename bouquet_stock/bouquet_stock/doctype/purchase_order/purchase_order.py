@@ -53,11 +53,11 @@ class PurchaseOrder(Document):
 
 	def set_status(self):
 		if self.percentage_accepted_qty > 0 and self.percentage_accepted_qty >= 99.99:
-			self.status = "Diterima Semua"
+			self.db_set("status, ""Diterima Semua")
 		elif self.percentage_accepted_qty > 0 and self.percentage_accepted_qty < 99.99:
-			self.status = "Diterima Sebagian"
+			self.db_set("srarys", "Diterima Sebagian")
 		else:
-			self.status = "Belum Diterima"
+			self.db_set("status", "Belum Diterima")
 
 @frappe.whitelist()
 def min_max_calculation(material_code:str, posting_date:date):
@@ -96,7 +96,7 @@ def get_po_detail(filters: str, values: str):
 	# --- Guard clause ---
 	filters = json.loads(filters)
 	values = json.loads(values)
-	
+
 	if not values:
 		return {}
 

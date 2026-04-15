@@ -84,6 +84,8 @@ function setPurchaseOrderMaterials(frm, cdt, cdn) {
                     "po_detail": res.name,
                     "current_qty": res.current_qty,
                     "price": res.price,
+                    "accepted_qty": res.accepted_qty,
+                    "ordered_qty": res.qty,
                     "qty": res.qty - res.accepted_qty
                 });
                 frm.refresh_field("materials")
