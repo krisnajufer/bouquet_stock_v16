@@ -104,7 +104,6 @@
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Qty Change",
-   "non_negative": 1,
    "read_only": 1,
    "search_index": 1
   },
@@ -133,7 +132,7 @@
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-12 12:08:22.820583",
+ "modified": "2026-04-22 17:00:31.519583",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Stock Ledger Entry",
