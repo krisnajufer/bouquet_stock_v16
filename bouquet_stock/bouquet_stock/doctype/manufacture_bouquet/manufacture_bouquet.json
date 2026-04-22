@@ -10,7 +10,7 @@
   "material_name",
   "column_break_ovso",
   "current_qty",
-  "required_qty",
+  "qty",
   "status"
  ],
  "fields": [
@@ -53,18 +53,6 @@
    "search_index": 1
   },
   {
-   "fieldname": "required_qty",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
-   "label": "Qty Dibutuhkan",
-   "non_negative": 1,
-   "precision": "0",
-   "read_only": 1,
-   "search_index": 1
-  },
-  {
    "fieldname": "status",
    "fieldtype": "Select",
    "in_list_view": 1,
@@ -74,13 +62,25 @@
    "options": "\nMencukupi\nTidak Mencukupi",
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Qty Dibutuhkan",
+   "non_negative": 1,
+   "precision": "0",
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-04-21 15:36:29.237034",
+ "modified": "2026-04-22 16:14:25.237598",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Manufacture Bouquet",
