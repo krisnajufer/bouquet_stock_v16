@@ -53,7 +53,7 @@ class PurchaseOrder(Document):
 
 	def set_status(self):
 		if self.percentage_accepted_qty > 0 and self.percentage_accepted_qty >= 99.99:
-			self.db_set("status, ""Diterima Semua")
+			self.db_set("status", "Diterima Semua")
 		elif self.percentage_accepted_qty > 0 and self.percentage_accepted_qty < 99.99:
 			self.db_set("status", "Diterima Sebagian")
 		else:
