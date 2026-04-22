@@ -38,6 +38,9 @@ class Manufacture(Document):
 	def on_cancel(self):
 		self.process_stock_ledger_entries(True)
 
+	def on_trash(self):
+		frappe.db.delete("Stock Ledger Entry", {"voucher_type": "Manufacture", "voucher_no": self.name})
+
 	def process_stock_ledger_entries(self, cancelled=False):
 		for child in self.materials:
 			if cancelled:

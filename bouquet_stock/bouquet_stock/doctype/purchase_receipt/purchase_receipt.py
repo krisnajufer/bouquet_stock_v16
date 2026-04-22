@@ -26,6 +26,9 @@ class PurchaseReceipt(Document):
 		self.process_stock_ledger_entries(True)
 		self.update_purchase_order_items()
 
+	def on_trash(self):
+		frappe.db.delete("Stock Ledger Entry", {"voucher_type": "Purchase Receipt", "voucher_no": self.name})
+
 	def validate_materials_qty(self):
 		msg = []
 		for row in self.materials:
