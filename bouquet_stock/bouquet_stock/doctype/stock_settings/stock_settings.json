@@ -6,7 +6,10 @@
  "engine": "InnoDB",
  "field_order": [
   "lead_time",
-  "calculation_transaction"
+  "calculation_transaction",
+  "initial_reorder_threshold",
+  "column_break_cghr",
+  "is_critical_stock_alert"
  ],
  "fields": [
   {
@@ -24,13 +27,30 @@
    "label": "Calculation Transaction (Days)",
    "non_negative": 1,
    "reqd": 1
+  },
+  {
+   "fieldname": "initial_reorder_threshold",
+   "fieldtype": "Float",
+   "label": "Initial Reorder Threshold (Qty)",
+   "non_negative": 1,
+   "precision": "0"
+  },
+  {
+   "fieldname": "column_break_cghr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_critical_stock_alert",
+   "fieldtype": "Check",
+   "label": "Is Critical Stock Alert"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-04-12 12:05:22.597414",
+ "modified": "2026-04-23 18:43:56.105941",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Stock Settings",

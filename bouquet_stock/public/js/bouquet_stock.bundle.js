@@ -1,0 +1,1 @@
+import "./alert_critical_stock"

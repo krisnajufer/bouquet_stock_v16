@@ -3,7 +3,7 @@
 
 frappe.ui.form.on("Purchase Order", {
 	refresh(frm) {
-
+        filterMaterials(frm);
 	},
 
     posting_date(frm){
@@ -103,4 +103,12 @@ function recalculateMinMax(frm) {
     materials.forEach(row => {
         minmaxCalculation(frm, row.doctype, row.name);
     });
+}
+
+function filterMaterials(frm) {
+    frm.set_query("material_code", "materials", (doc) => {
+        return {
+            query:"bouquet_stock.bouquet_stock.doctype.purchase_order.purchase_order.filter_materials"
+        }
+    })
 }

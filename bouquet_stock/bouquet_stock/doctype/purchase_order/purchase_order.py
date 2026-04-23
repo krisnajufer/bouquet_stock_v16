@@ -125,3 +125,30 @@ def get_po_detail(filters: str, values: str):
 		result["current_qty"] = get_actual_qty(material_code)
 
 	return result
+
+
+@frappe.whitelist()
+def filter_materials(doctype, txt, searchfield, start, page_len, filters):
+	MS = frappe.qb.DocType("Material Stock")
+	initial_reorder_threshold = frappe.db.get_single_value("Stock Settings", "initial_reorder_threshold")
+	txt = f"%{txt}%"
+
+	result = (
+		frappe.qb.select(
+			MS.material_code.as_("value"),
+			MS.material_name.as_("description")
+		)
+		.from_(MS)
+		.where(
+			(MS.actual_qty <= MS.min_qty)
+			| (MS.actual_qty <= initial_reorder_threshold)
+		)
+	)
+
+	result = result.where(
+		(MS.material_code.like(txt))
+		| (MS.material_name.like(txt))
+	)
+
+
+	return result.run()
