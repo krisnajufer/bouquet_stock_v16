@@ -49,11 +49,12 @@ class PurchaseOrder(Document):
 			row.lead_time = res.lead_time
 			row.min_qty = res.min
 			row.max_qty = res.max
-			remaining_qty_to_order = res.max - res.current_qty
-			if res.max and res.max > 0 and row.qty > remaining_qty_to_order:
-				row.qty = remaining_qty_to_order
-			elif res.safety_stock and res.safety_stock > 0 and row.qty < res.safety_stock:
-				row.qty = res.safety_stock
+			remaining_max_qty_to_order = res.max - res.current_qty
+			remaining_ss_qty_to_order = res.safety_stock - res.current_qty
+			if res.max and res.max > 0 and row.qty > remaining_max_qty_to_order:
+				row.qty = remaining_max_qty_to_order
+			elif res.safety_stock and res.safety_stock > 0 and row.qty < remaining_ss_qty_to_order:
+				row.qty = remaining_ss_qty_to_order
 
 	def set_status(self):
 		if self.percentage_accepted_qty > 0 and self.percentage_accepted_qty >= 99.99:
