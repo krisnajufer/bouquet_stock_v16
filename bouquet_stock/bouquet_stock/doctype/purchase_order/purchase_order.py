@@ -29,6 +29,7 @@ class PurchaseOrder(Document):
 
 	def on_submit(self):
 		self.set_status()
+		self.recalculate_ordered_qty()
 
 	def set_missing_values(self):
 		if not self.supplier_name:
@@ -63,6 +64,12 @@ class PurchaseOrder(Document):
 			self.db_set("status", "Diterima Sebagian")
 		else:
 			self.db_set("status", "Belum Diterima")
+
+	def recalculate_ordered_qty(self):
+		material_codes = []
+		for row in self.materials:
+			material_codes.append(row.material_code)
+		calculate_ordered_qty(material_codes)
 
 @frappe.whitelist()
 def min_max_calculation(material_code:str, posting_date:date):
@@ -157,3 +164,23 @@ def filter_materials(doctype, txt, searchfield, start, page_len, filters):
 
 
 	return result.run()
+
+def calculate_ordered_qty(material_code:list):
+	PO = frappe.qb.DocType("Purchase Order")
+	POM = frappe.qb.DocType("Purchase Order Materials")
+	
+	results = (
+		frappe.qb.select(
+			POM.material_code, Sum(POM.qty - POM.accepted_qty).as_("ordered_qty")
+		)
+		.from_(PO)
+		.left_join(POM)
+		.on(PO.name == POM.parent)
+		.where(
+			(PO.docstatus == 1) & (POM.material_code.isin(material_code))
+		)
+		.groupby(POM.material_code)
+	).run(as_dict=True)
+
+	for row in results:
+		frappe.db.set_value("Material Stock", {"material_code": row.material_code}, "ordered_qty", row.ordered_qty)

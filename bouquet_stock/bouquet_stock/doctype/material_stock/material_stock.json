@@ -109,6 +109,7 @@
    "label": "Qty Masuk",
    "non_negative": 1,
    "precision": "2",
+   "read_only": 1,
    "search_index": 1
   },
   {
@@ -137,7 +138,7 @@
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-27 16:30:40.448333",
+ "modified": "2026-04-29 15:28:08.014320",
  "modified_by": "Administrator",
  "module": "Bouquet Stock",
  "name": "Material Stock",

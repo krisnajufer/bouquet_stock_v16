@@ -10,6 +10,9 @@ from bouquet_stock.bouquet_stock.doctype.stock_ledger_entry.stock_ledger_entry i
 	make_sle,
 	cancel_sle
 )
+from bouquet_stock.bouquet_stock.doctype.purchase_order.purchase_order import (
+	calculate_ordered_qty
+)
 from frappe.query_builder.functions import ( 
 	Sum
 )
@@ -21,6 +24,7 @@ class PurchaseReceipt(Document):
 	def on_submit(self):
 		self.process_stock_ledger_entries()
 		self.update_purchase_order_items()
+		self.recalculate_ordered_qty()
 		
 	def on_cancel(self):
 		self.process_stock_ledger_entries(True)
@@ -140,7 +144,13 @@ class PurchaseReceipt(Document):
 				update_modified=False
 			)
 			frappe.get_doc("Purchase Order", row.parent).set_status()
-			
+
+	def recalculate_ordered_qty(self):
+		material_codes = []
+		for row in self.materials:
+			material_codes.append(row.material_code)
+		calculate_ordered_qty(material_codes)
+
 @frappe.whitelist()
 def filter_material_code(doctype, txt, searchfield, start, page_len, filters):
 	PO = frappe.qb.DocType("Purchase Order")
