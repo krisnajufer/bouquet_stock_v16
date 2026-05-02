@@ -23,7 +23,7 @@ frappe.query_reports["Stock Movement"] = {
 			"fieldname": "voucher_type",
 			"label": __("Tipe Transaksi"),
 			"fieldtype": "Select",
-			"Options": "Purchase Receipt\nManufacture\nMaterial Issue"
+			"options": "Purchase Receipt\nManufacture\nMaterial Issue"
 		}
 	],
     formatter: function (value, row, column, data, default_formatter) {
