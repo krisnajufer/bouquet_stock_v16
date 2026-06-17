@@ -78,13 +78,15 @@ function minmaxCalculation(frm, cdt, cdn) {
             if (r.message) {
                 res = r.message;
                 let ordered_qty = curRow.qty ? curRow.qty : 0;
+                let qty = res.max >  0 ? res.max - ordered_qty: ordered_qty ;
+                qty = qty < 0 ? 0 : qty;
                 values = {
                     "safety_stock": res.safety_stock,
                     "current_qty": res.current_qty,
                     "min_qty": res.min,
                     "max_qty": res.max,
                     "lead_time": res.lead_time,
-                    "qty": res.max >  0 ? res.max - ordered_qty: ordered_qty 
+                    "qty": qty 
                 };
                 frappe.model.set_value(cdt, cdn, values);
                 frm.refresh_field("materials");
